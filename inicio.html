@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="img/flappy_icon.png" type="image/png" />
+  <title>Flappy Bird X - Información</title>
+</head>
+
+<body>
+  <nav class="navbar">
+    <a href="index.html" class="navbar__logo">Flappy Bird X</a>
+    <div class="navbar__notch">
+      <p>Inicio</p>
+      <a href="inicio.html" class="navbar__menu-link">Inicio</a>
+    </div>
+    <div class="navbar__menu">
+      <a href="historia.html" class="navbar__menu-link">Historia</a>
+      <a href="datos.html" class="navbar__menu-link">Curiosidades</a>
+      <a href="tutorial.html" class="navbar__menu-link">Modos</a>
+      <a href="creador" class="navbar__menu-link">Creador</a>
+    </div>
+  </nav>
+
+  <h2 class="separator">Descubre el mundo de Flappy Bird</h2>
+
+  <div class="program" id="historia">
+    <div class="program__info">
+      <h2 class="program__title">¿Qué es Flappy Bird?</h2>
+      <p class="program__description">
+        Flappy Bird fue un juego para móviles lanzado en 2013, famoso por su jugabilidad simple pero extremadamente difícil. Con solo tocar la pantalla, controlabas a un pájaro para que volara entre tuberías sin tocarlas. Su éxito fue tan explosivo que el creador decidió eliminarlo en pleno auge.
+      </p>
+    </div>
+  </div>
+
+  <div class="course-list" id="datos">
+    <div class="course-list__item">
+      <img src="img/Buy my flappy bird.jpg" class="course-list__item-image" />
+      <div class="course-list__item-details">
+        <h2 class="course-list__item-title">Impacto Viral</h2>
+        <p class="course-list__item-description">Alcanzó más de 50 millones de descargas y generaba $50,000 diarios en anuncios.</p>
+      </div>
+    </div>
+    <div class="course-list__item">
+      <img src="img/Flappy Bird _ Play Online Free Browser Games.jpg" class="course-list__item-image" />
+      <div class="course-list__item-details">
+        <h2 class="course-list__item-title">Juego Eliminado</h2>
+        <p class="course-list__item-description">Su creador lo retiró por considerar que se había vuelto adictivo y dañino.</p>
+      </div>
+    </div>
+    <div class="course-list__item">
+      <img src="img/Playing Flappy Bird.jpg" class="course-list__item-image" />
+      <div class="course-list__item-details">
+        <h2 class="course-list__item-title">Simplicidad Brutal</h2>
+        <p class="course-list__item-description">Un solo toque para volar, pero cada segundo requería precisión extrema.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="about" id="modos">
+    <img src="img/Goju.jpg" alt="Modos del juego" class="about__image" />
+    <div class="about__details">
+      <div class="about__details-title">Estilos y versiones</div>
+      <div class="about__details-description">
+        A pesar de ser simple, Flappy Bird inspiró cientos de versiones: en 3D, multijugador, con nuevos obstáculos o incluso con distintos animales. Su estética pixel retro y su sonido clásico lo volvieron inolvidable.
+      </div>
+    </div>
+  </div>
+
+  <div class="about" id="creador">
+    <img src="img/descarga (23).jpg" alt="Dong Nguyen" class="about__image" />
+    <div class="about__details">
+      <div class="about__details-title">¿Quién lo creó?</div>
+      <div class="about__details-description">
+        El desarrollador vietnamita <strong>Dong Nguyen</strong> creó Flappy Bird en solo unos días. El éxito inesperado del juego cambió su vida, y decidió retirarlo por razones personales, lo que solo aumentó su leyenda.
+      </div>
+    </div>
+  </div>
+
+  <div class="gradient">
+    <div class="subscription">
+      <h2 class="subscription__title">¿Te interesa saber más?</h2>
+      <p class="subscription__description">
+        Suscríbete para recibir más curiosidades, historia de juegos retro y análisis de fenómenos virales como Flappy Bird.
+      </p>
+      <form class="subscription__form">
+        <input type="email" class="subscription__input" placeholder="Ingresa tu email" required />
+        <button type="submit" class="subscription__button">Suscribirme</button>
+      </form>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-links">
+        <div class="footer__branding">
+          <p class="footer__brand-name">Flappy Bird X</p>
+        </div>
+        <div class="footer__column">
+          <a href="#historia" class="footer__link">Historia</a>
+          <a href="#datos" class="footer__link">Datos Curiosos</a>
+          <a href="#modos" class="footer__link">Estética & Modos</a>
+          <a href="#creador" class="footer__link">Creador</a>
+        </div>
+      </div>
+      <p class="footer__copyright">2025 © Flappy Bird X</p>
+    </footer>
+  </div>
+
+  <audio id="audio" src="audio/flappy_theme.mp3" preload="auto" loop></audio>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const audio = document.getElementById("audio");
+      const savedTime = localStorage.getItem("audioTime");
+      if (savedTime) {
+        audio.currentTime = parseFloat(savedTime);
+      }
+
+      function playAudio() {
+        audio.volume = 0.4;
+        audio.muted = false;
+        audio.play().catch((error) => {
+          console.warn("⚠️ Error al reproducir el audio:", error);
+        });
+      }
+
+      playAudio();
+
+      audio.addEventListener("timeupdate", () => {
+        localStorage.setItem("audioTime", audio.currentTime);
+      });
+
+      audio.addEventListener("ended", () => {
+        localStorage.removeItem("audioTime");
+      });
+
+      document.addEventListener("visibilitychange", () => {
+        if (document.hidden) {
+          audio.pause();
+        } else if (!audio.muted) {
+          audio.play();
+        }
+      });
+    });
+  </script>
+
+  <script src="script.js"></script>
+</body>
+</html>

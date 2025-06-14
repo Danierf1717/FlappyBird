@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="img/flappy_icon.png" type="image/png" />
+  <title>Curiosidades - Flappy Bird X</title>
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="index.html" class="navbar__logo">Flappy Bird X</a>
+  <div class="navbar__notch">
+    <p>Inicio</p>
+    <a href="inicio.html" class="navbar__menu-link">Inicio</a>
+  </div>
+  <div class="navbar__menu">
+    <a href="historia.html" class="navbar__menu-link">Historia</a>
+    <a href="datos.html" class="navbar__menu-link">Curiosidades</a>
+    <a href="tutorial.html" class="navbar__menu-link">Modos</a>
+    <a href="creador.html" class="navbar__menu-link">Creador</a>
+  </div>
+</nav>
+
+<h2 class="separator">Curiosidades de Flappy Bird</h2>
+
+<div class="program">
+  <div class="program__info">
+    <h2 class="program__title">¿Sabías que...?</h2>
+    
+    <ul class="program__description">
+      <li>🐤 <strong>Flappy Bird fue creado en solo 2-3 días</strong> por el desarrollador vietnamita Dong Nguyen.</li>
+      <li>📱 El juego fue eliminado en 2014 porque, según su creador, se volvió <em>demasiado adictivo</em>.</li>
+      <li>🤑 Después de su eliminación, celulares con Flappy Bird instalado llegaron a venderse por más de <strong>$100,000 USD</strong> en eBay.</li>
+      <li>🎮 El arte del juego está inspirado en los gráficos del NES y en particular en los <strong>tubos de Mario</strong>.</li>
+      <li>🧠 El código del juego tiene una física tan precisa que cualquier cambio mínimo lo haría casi injugable.</li>
+      <li>🚀 Hay jugadores que han llegado a pasar los 999 puntos, pero el juego se vuelve tan rápido que es casi imposible ver el pájaro.</li>
+      <li>💡 Existe un bug visual secreto si mantienes el pájaro quieto por más de 1 minuto antes de tocar la pantalla (en versiones modificadas).</li>
+      <li>⛓️ Muchos clones del juego salieron después, pero ninguno logró replicar la sensación exacta del original.</li>
+      <li>🧩 La "IA" de los tubos es aleatoria en posición, pero está programada para nunca dejar un espacio menor a un mínimo jugable.</li>
+      <li>🕹️ Existe una versión del juego oculta en calculadoras gráficas, refrigeradores inteligentes y hasta relojes inteligentes.</li>
+    </ul>
+
+    <p class="program__description">Flappy Bird fue más que un juego: fue un fenómeno cultural. Su dificultad extrema, su estilo simple y su historia detrás lo convirtieron en leyenda. ¿Conoces alguna otra curiosidad? ¡Compártela con nosotros en la sección de comunidad!</p>
+  </div>
+</div>
+
+<div class="about">
+  <img src="img/descarga(24).jpg" alt="Curioso Flappy" class="about__image">
+  <div class="about__details">
+    <div class="about__details-title">Sobre Flappy Bird X</div>
+    <div class="about__details-description">
+      Esta versión es un homenaje con modos extremos, diseño renovado y detalles ocultos que solo los más atentos podrán descubrir. Porque Flappy nunca fue solo un juego… fue una prueba mental.
+    </div>
+    <button class="about__details-button">Explora los Modos</button>
+  </div>
+</div>
+
+<div class="gradient">
+  <div class="subscription">
+    <h2 class="subscription__title">Suscríbete para más secretos 🕵️</h2>
+    <p class="subscription__description">
+      Recibe en tu correo trucos ocultos, hacks visuales y secretos del lore de Flappy Bird X.
+    </p>
+    <form class="subscription__form">
+      <input type="email" class="subscription__input" placeholder="Ingresa tu email" required>
+      <button type="submit" class="subscription__button">Suscribirme</button>
+    </form>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-links">
+      <div class="footer__branding">
+        <p class="footer__brand-name">Flappy Bird X</p>
+      </div>
+      <div class="footer__column">
+        <a href="estructura.html" class="footer__link">Modo Hardcore</a>
+        <a href="reto.html" class="footer__link">Retos Visuales</a>
+        <a href="consejos.html" class="footer__link">Tips de Supervivencia</a>
+        <a href="contacto.html" class="footer__link">Contacto</a>
+      </div>
+    </div>
+    <p class="footer__copyright">2025 © Flappy Bird X</p>
+  </footer>
+</div>
+
+<audio id="audio" src="SpotifyMate.com - EEYUH_ x Fluxxwave _Slowed _ Reverb_ - Clovis Reyes.mp3" preload="auto" loop></audio>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const audio = document.getElementById('audio');
+  const savedTime = localStorage.getItem('audioTime');
+  if (savedTime) {
+    audio.currentTime = parseFloat(savedTime);
+  }
+
+  function playAudio() {
+    audio.volume = 0.4;
+    audio.muted = false;
+    audio.play().catch(error => {
+      console.warn("⚠️ Error al reproducir el audio:", error);
+    });
+  }
+
+  playAudio();
+
+  audio.addEventListener('timeupdate', () => {
+    localStorage.setItem('audioTime', audio.currentTime);
+  });
+
+  audio.addEventListener('ended', () => {
+    localStorage.removeItem('audioTime');
+  });
+
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      audio.pause();
+    } else if (!audio.muted) {
+      audio.play();
+    }
+  });
+});
+</script>
+<script src="script.js"></script>
+</body>
+</html>
